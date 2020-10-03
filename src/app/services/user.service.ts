@@ -20,8 +20,12 @@ export class UserService {
     return this.http.get(API_URL + 'test/all', { responseType: 'text' });
   }
 
-  getCustomerContent(): Observable<any> {
-    return this.http.get(API_URL + 'test/customer', { responseType: 'text' });
+  getCoordinatorContent(): Observable<any> {
+    return this.http.get(API_URL + 'test/coordinator', { responseType: 'text' });
+  }
+
+  getParticipantContent(): Observable<any> {
+    return this.http.get(API_URL + 'test/participant', { responseType: 'text' });
   }
 
   getAdminContent(): Observable<any> {
