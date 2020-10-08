@@ -7,15 +7,24 @@
         <mat-card-content>
             <form class="my-form" name="form" *ngIf="!isSuccessful" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                 
-                <mat-form-field appearance="fill">
-                    <mat-label>Select User Role</mat-label>
-                    <mat-select name="role" [(ngModel)]="model.role" #role="ngModel" >
-                        <mat-option *ngFor="let role of roles" [value]="role">
-                        {{role}}
-                        </mat-option>
-                    </mat-select>
+                <mat-form-field class="full-width">
+                    <mat-label>Username</mat-label>
+                    <input matInput type="username" name="username" [(ngModel)]="model.username" #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.invalid }" minlength="3" maxlength="20" required>
+                    <mat-error *ngIf="f.submitted && username.invalid">
+                        <mat-error *ngIf="username.errors.required">Username is required</mat-error>
+                        <mat-error *ngIf="username.errors.minlength">Username cannot be less than 3 characters</mat-error>
+                    </mat-error>
                 </mat-form-field>
 
+                <mat-form-field class="full-width">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6">
+                    <mat-error *ngIf="f.submitted && password.invalid">
+                        <mat-error *ngIf="password.errors.required">Password is required</mat-error>
+                        <mat-error *ngIf="password.errors.minlength">Password cannot be less than 6 characters</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                
                 <mat-form-field class="full-width">
                     <mat-label>First Name</mat-label>
                     <input matInput type="text" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" maxlength="10" required>
@@ -52,23 +61,15 @@
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field class="full-width">
-                    <mat-label>Username</mat-label>
-                    <input matInput type="username" name="username" [(ngModel)]="model.username" #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.invalid }" minlength="3" maxlength="20" required>
-                    <mat-error *ngIf="f.submitted && username.invalid">
-                        <mat-error *ngIf="username.errors.required">Username is required</mat-error>
-                        <mat-error *ngIf="username.errors.minlength">Username cannot be less than 3 characters</mat-error>
-                    </mat-error>
+                <mat-form-field appearance="fill">
+                    <mat-label>Select User Role</mat-label>
+                    <mat-select name="role" [(ngModel)]="model.role" #role="ngModel" >
+                        <mat-option *ngFor="let role of roles" [value]="role">
+                        {{role}}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
 
-                <mat-form-field class="full-width">
-                    <mat-label>Password</mat-label>
-                    <input matInput type="password" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6">
-                    <mat-error *ngIf="f.submitted && password.invalid">
-                        <mat-error *ngIf="password.errors.required">Password is required</mat-error>
-                        <mat-error *ngIf="password.errors.minlength">Password cannot be less than 6 characters</mat-error>
-                    </mat-error>
-                </mat-form-field>
                 <mat-card-actions>
                     <button mat-raised-button>REGISTER</button>
                 </mat-card-actions>

@@ -25,12 +25,14 @@ export class UserRegistrationComponent implements OnInit {
     this.authService.register(this.model).subscribe(
       data => {
         console.log(data);
+        console.log(this.model)
         this.isSuccessful = true;
         this.isSignUpFailed = false;
         this.router.navigateByUrl('/login');
       },
       err => {
         this.errorMessage = err.error.message;
+        console.log(this.model)
         this.isSignUpFailed = true;
       }
     );

@@ -12,7 +12,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { CoordinatorComponent } from './pages/coordinator/coordinator.component';
 import { ParticipantComponent } from './pages/participant/participant.component';
-
+import { UserRegistrationComponent } from './pages/user-registration/user-registration.component';
 
 
 @NgModule({
@@ -22,7 +22,8 @@ import { ParticipantComponent } from './pages/participant/participant.component'
     LoginComponent,
     AdminComponent,
     CoordinatorComponent,
-    ParticipantComponent
+    ParticipantComponent,
+    UserRegistrationComponent
   ],
   imports: [
     BrowserModule,
